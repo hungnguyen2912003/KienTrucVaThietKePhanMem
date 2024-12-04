@@ -1,0 +1,29 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class KeHoachHocTap
+{
+    String ten
+
+    + abstract int soTC()
+    + abstract double hocPhi()
+    + String thongTin()
+}
+
+KeHoachHocTap <|-- MonHoc
+
+KeHoachHocTap <|--* KeHoachChung
+
+KeHoachChung ---> "*" KeHoachHocTap : list
+
+note right of KeHoachChung
+    Cài đặt chung cho: Kỳ học, năm học, khóa học.
+end note
+
+class MonHoc
+{
+    int soTC
+    double hocPhiTC
+}
+
+@enduml

@@ -1,0 +1,22 @@
+@startuml
+
+interface Observer {
+    + nhanThongBao(message: String): void
+}
+
+class ATM {
+    - taiKhoan: TaiKhoan
+    + kiemTraTienRut(soTien: int): void
+    + rutTien(soTien: int): void
+}
+
+class TaiKhoan {
+    - soDu: int
+    + kiemTraSoDu(soTien: int): boolean
+    + nhanThongBao(message: String): void
+}
+
+ATM o-- TaiKhoan : taiKhoan
+Observer <|.. TaiKhoan : observer
+
+@enduml

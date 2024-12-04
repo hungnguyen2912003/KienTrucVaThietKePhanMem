@@ -1,0 +1,41 @@
+@startuml
+
+interface IObserver {
+    + update(): void
+}
+
+class Subject {
+    - observers: List<IObserver>
+    + attach(observer: IObserver): void
+    + detach(observer: IObserver): void
+    + notify(): void
+}
+
+class ConcreteSubject {
+    - state: string
+    + getState(): string
+    + setState(state: string): void
+}
+
+class ConcreteObserver {
+    + update(): void
+}
+
+class ATM {
+    - account: TaiKhoan
+    + kiemTraTienRut(amount: double): void
+    + rutTien(amount: double): void
+}
+
+class TaiKhoan {
+    - soDu: double
+    + kiemTraSoDu(amount: double): boolean
+    + nhanThongBao(message: string): void
+}
+
+Subject --> IObserver
+Subject <|-- ConcreteSubject
+IObserver <|-- ConcreteObserver
+ATM --> TaiKhoan
+
+@enduml

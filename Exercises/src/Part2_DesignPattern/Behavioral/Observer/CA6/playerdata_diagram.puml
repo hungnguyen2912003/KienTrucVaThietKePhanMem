@@ -1,0 +1,22 @@
+@startuml
+class PlayerData{
+    - PlayerDataListener listener;
+    - int thoiGian, soLuotChoi, diemSo
+    + void dangKy(PlayerDataListener listener)
+    + void huyDangKy(PlayerDataListener listener)
+    + void setThoiGian(int thoiGian)
+    + void setDiemSo(int diemSo)
+    + void setSoLuotChoi(int soLuotChoi)
+}
+class DashBoard
+interface PlayerDataListener{
+    + void listen(PlayerData p)
+}
+PlayerDataListener <|... DashBoard
+PlayerData ---> PlayerDataListener: listener
+DashBoard ---> PlayerData: playerData
+
+note right of PlayerData
+
+end note
+@enduml

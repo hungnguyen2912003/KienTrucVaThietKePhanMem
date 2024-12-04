@@ -1,0 +1,13 @@
+@startuml
+
+abstract class Student {
+    - double minScore;
+    - String learnAbility;
+    + {abstract} Student setStudentSmaller(Student s)
+    + {abstract} String checkLearnAbility(double score, double minScore)
+}
+
+Student <|--- NormalStudent
+Student <|--- WeakStudent
+
+@enduml

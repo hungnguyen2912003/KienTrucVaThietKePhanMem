@@ -1,0 +1,14 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class XepLoai
+
+class XepLoaiThongThuong
+
+class XeploaiCaoNhat
+
+XepLoai <|--- XepLoaiThongThuong
+XepLoai <--- XepLoaiThongThuong : keTiep
+
+XepLoai <|-- XeploaiCaoNhat
+@enduml

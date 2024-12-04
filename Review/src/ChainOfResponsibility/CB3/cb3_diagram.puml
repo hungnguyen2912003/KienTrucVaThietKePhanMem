@@ -1,0 +1,16 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract TienDienSinhHoat
+
+class BacThongThuong
+
+class BacCaoNhat
+
+TienDienSinhHoat <|-- BacThongThuong
+TienDienSinhHoat <--- BacThongThuong : keTiep
+
+
+TienDienSinhHoat <|--- BacCaoNhat
+
+@enduml

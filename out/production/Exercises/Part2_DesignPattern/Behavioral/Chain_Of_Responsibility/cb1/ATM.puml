@@ -1,0 +1,52 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class ATM
+{
+    - int menhGia;
+    + ATM thietlapMenhGiaThapHon(ATM atm);
+    + void rutTien(int soTien);
+}
+
+
+ATM <|--- MenhGiaATM
+ATM <|--- MenhGiaThapNhat
+
+MenhGiaATM ---> ATM : menhGiaThapHon
+
+class MenhGiaThapNhat
+{
+    + void rutTien(int soTien);
+}
+note right of ATM::rutTien
+    tính số tờ, nếu > 0 --> in ra số tờ
+    tính số tiền dư, nếu >0
+    Chuyển tiền dư cho thành phần sau xử lý
+end note
+
+
+abstract class ChonMenhGiaFactory
+{
+    # ATM getChuoiMenhGia(int menhGia)
+    + void rutTien(int soTien, int menhGiaCaoNhat)
+}
+
+ChonMenhGiaFactory ..|> ATM
+note top of ChonMenhGiaFactory
+    Phương thức rút tiền:
+    - Gọi phương thức getChuoiMenhGia --> chuoiMenhGia
+    - Gọi phương thức rutTien trên đối tượng chuoiMenhGia
+end note
+
+ChonMenhGiaVND --|> ChonMenhGiaFactory
+
+ChonMenhGiaVND <--* ATM:"menhGia500, \nmenhGia100, \n... \nmenhGia1"
+
+
+note bottom of ChonMenhGiaVND
+    + Tạo các đối tượng ATM theo mệnh giá tiền Việt Nam
+    + Kết nối các đối tượng này thành chuỗi trong phương thức khởi tạo
+    + Phương thức getCHuoiMenhGia trả về đối tượng kiểu
+    ATM trong chuỗi ứng giá trị đầu vào
+end note
+@enduml

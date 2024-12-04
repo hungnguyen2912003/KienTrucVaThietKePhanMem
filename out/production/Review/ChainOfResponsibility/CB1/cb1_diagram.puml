@@ -1,0 +1,36 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract ATMFactory
+
+class ChuoiMenhGiaVND
+
+ChuoiMenhGiaVND --> ATMFactory
+
+ATMFactory ..|> ATM
+
+ATM *--> ChuoiMenhGiaVND : m500, m100, m50, m10, m1
+
+abstract ATM
+{
+    int menhGia;
+
+    + {abstract} menhGiaKeTiep(ATM keTiep)
+    + rutTien(menhGia)
+}
+
+class MenhGiaThongThuong
+{
+    + rutTien(menhGia)
+}
+
+
+ATM <|--- MenhGiaThongThuong
+
+ATM <---* MenhGiaThongThuong : keTiep
+
+class MenhGiaThapNhat
+
+ATM <|--- MenhGiaThapNhat
+
+@enduml

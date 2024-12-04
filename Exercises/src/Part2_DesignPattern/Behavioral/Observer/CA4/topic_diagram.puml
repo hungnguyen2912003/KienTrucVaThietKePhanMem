@@ -1,0 +1,24 @@
+@startuml
+class Topic {
+    + List<TinTuc> t;
+    + void dangKy(TopicListener listener)
+    + void huyDangKy(TopicListener listener)
+    + void themMoi(TinTuc t)
+    + void capNhat(TinTuc t)
+}
+
+interface TopicListener{
+    void listen(TinTuc t)
+}
+class ThanhVienA
+class ThanhVienB{
+    List<TinTuc> list;
+}
+
+TopicListener <|... ThanhVienA
+TopicListener <|... ThanhVienB
+Topic o---> TopicListener: listeners
+ThanhVienA ---> Topic: topic
+ThanhVienB ---> Topic: topic
+
+@enduml

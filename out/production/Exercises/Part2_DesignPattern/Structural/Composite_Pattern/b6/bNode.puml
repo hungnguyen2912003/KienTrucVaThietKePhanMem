@@ -1,0 +1,28 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+abstract class BNode
+{
+    int value;
+
+    + abstract void add(BNode n);
+    + abstract void addR(BNode n);
+    + abstract void remove(BNode n);
+    + abstract void removeR(BNode n);
+    + String duyet();
+}
+
+BNode <|--- InnerNode
+
+InnerNode ---> BNode : left
+
+InnerNode ---> BNode : right
+
+BNode <|--- Leaft
+
+note right of BNode::duyet
+    Phuơng thức duyệt in các
+    giá trị trong cây theo thứ tự NRL
+end note
+
+@enduml
